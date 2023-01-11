@@ -1,16 +1,25 @@
 const readline = require('readline-sync');
-const VALID_CHOICES = ['rock', 'paper', 'scissors'];
+const VALID_CHOICES = ['r', 'p', 'sc', "l", "sp"];
+
+let KEY = {
+  r: "rock",
+  p: "paper",
+  sc: "scissors",
+  l: "lizard",
+  sp: "spock"
+}
+
 
 function prompt(message) {
   console.log(`=> ${message}`);
 }
 
 function determineWinner(choice, computerChoice) {
-  prompt(`You chose ${choice}, computer chose ${computerChoice}`)
+  prompt(`You chose ${KEY[choice]}, computer chose ${KEY[computerChoice]}`)
 
-  if ((choice === 'rock' && computerChoice === 'scissors') || (choice === 'paper' && computerChoice === 'rock') || (choice === 'scissors' && computerChoice === 'paper')) {
+  if ((choice === 'r' && computerChoice === 'sc') || (choice === 'p' && computerChoice === 'r') || (choice === 'sc' && computerChoice === 'p') || (choice === 'sp' && computerChoice === 'r') || (choice === 'l' && computerChoice === 'p')) {
     return "User"
-  } else if ((choice === 'rock' && computerChoice === 'paper') || (choice === 'paper' && computerChoice === 'scissors') || (choice === 'scissors' && computerChoice === 'rock')) {
+  } else if ((choice === 'r' && computerChoice === 'p') || (choice === 'p' && computerChoice === 'sc') || (choice === 'sc' && computerChoice === 'r') || (choice === 'p' && computerChoice === 'l') || (choice === 'r' && computerChoice === 'sp')) {
     return "Computer"
   } else {
     return "Tie"
@@ -37,7 +46,7 @@ while (true) {
   let choice = readline.question();
 
   while (!VALID_CHOICES.includes(choice)) {
-    prompt("That's not a valid choice.  Please choose rock, paper, or scissors.")
+    prompt("That's not a valid choice.  Please choose rock, paper, scissors, lizard or spock. Type r for rock, p for paper, sc for scissors, l for lizard, or sp for spock.")
     choice = readline.question();
   }
 
