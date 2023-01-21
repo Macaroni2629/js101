@@ -38,5 +38,5 @@ parseJSON(data);    // Logs "There was a SyntaxError parsing JSON data:
                     // Returns null
                     
                     
-                    
+note to self January 15, 2023.  talk to sheila about getting `undefined` choices.      
 
